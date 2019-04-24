@@ -121,6 +121,9 @@ def main():
     # Заводим объект, в котором будем хранить все параметры отрисовки карты.
     mp = MapParams()
 
+    # blue
+
+
     pd_cs = pygame.sprite.Sprite()
     pd_cs.image = load_image("p.d c.s.png")
     pd_cs.rect = pd_cs.image.get_rect()
@@ -148,6 +151,40 @@ def main():
     all_sprites.add(pu_cs)
     pu_cs.rect.x = 284
     pu_cs.rect.y = 0
+
+
+
+    # red
+
+
+    pd_ck = pygame.sprite.Sprite()
+    pd_ck.image = load_image("p.d c.k.png")
+    pd_ck.rect = pd_ck.image.get_rect()
+    all_sprites.add(pd_ck)
+    pd_ck.rect.x = 4000
+    pd_ck.rect.y = -4000
+
+    pl_ck = pygame.sprite.Sprite()
+    pl_ck.image = load_image("p.l c.k.png")
+    pl_ck.rect = pl_ck.image.get_rect()
+    all_sprites.add(pl_ck)
+    pl_ck.rect.x = 4000
+    pl_ck.rect.y = -4000
+
+    pr_ck = pygame.sprite.Sprite()
+    pr_ck.image = load_image("p.r c.k.png")
+    pr_ck.rect = pd_ck.image.get_rect()
+    all_sprites.add(pr_ck)
+    pr_ck.rect.x = 4000
+    pr_ck.rect.y = -4000
+
+    pu_ck = pygame.sprite.Sprite()
+    pu_ck.image = load_image("p.u c.k.png")
+    pu_ck.rect = pu_ck.image.get_rect()
+    all_sprites.add(pu_ck)
+    pu_ck.rect.x = 4000
+    pu_ck.rect.y = -4000
+
 
     while True:
         event = pygame.event.wait()
