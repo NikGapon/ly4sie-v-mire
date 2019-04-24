@@ -148,7 +148,7 @@ def main():
     all_sprites.add(pu_cs)
     pu_cs.rect.x = 4000
     pu_cs.rect.y = -4000
-    
+
     while True:
         event = pygame.event.wait()
         if event.type == pygame.QUIT:  # Выход из программы
@@ -177,10 +177,11 @@ def main():
         # Загружаем карту, используя текущие параметры.
 
         map_file = load_map(mp)
+
         #print(mp.retyrn_kord())
         # Рисуем картинку, загружаемую из только что созданного файла.
         screen.blit(pygame.image.load(map_file), (0, 0))
-
+        all_sprites.draw(screen)
         # Переключаем экран и ждем закрытия окна.
         pygame.display.flip()
 
