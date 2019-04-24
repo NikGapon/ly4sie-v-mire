@@ -2,6 +2,7 @@
 
 import requests
 
+
 def geocode(address):
     # Собираем запрос для геокодера.
     geocoder_request = "http://geocode-maps.yandex.ru/1.x/?geocode={address}&format=json".format(**locals())
@@ -42,7 +43,7 @@ def get_coordinates(address):
 def get_ll_span(address):
     toponym = geocode(address)
     if not toponym:
-        return (None,None)
+        return (None , None)
 
     # Координаты центра топонима:
     toponym_coodrinates = toponym["Point"]["pos"]
@@ -56,8 +57,8 @@ def get_ll_span(address):
     envelope = toponym["boundedBy"]["Envelope"]
 
     # левая, нижняя, правая и верхняя границы из координат углов:
-    l,b = envelope["lowerCorner"].split(" ")
-    r,t = envelope["upperCorner"].split(" ")
+    l, b = envelope["lowerCorner"].split(" ")
+    r, t = envelope["upperCorner"].split(" ")
   
     # Вычисляем полуразмеры по вертикали и горизонтали
     dx = abs(float(l) - float(r)) / 2.0
@@ -68,6 +69,7 @@ def get_ll_span(address):
 
     return (ll, span)
 
+
 # Находим ближайшие к заданной точке объекты заданного типа.
 def get_nearest_object(point, kind):
     geocoder_request_template = "http://geocode-maps.yandex.ru/1.x/?geocode={ll}&kind={kind}&format=json"
@@ -76,7 +78,9 @@ def get_nearest_object(point, kind):
     # Выполняем запрос к геокодеру, анализируем ответ.
     geocoder_request = geocoder_request_template.format(**locals())
     response = requests.get(geocoder_request)
+
     if not response:
+
         raise RuntimeError(
             """Ошибка выполнения запроса:
             {geocoder_request}

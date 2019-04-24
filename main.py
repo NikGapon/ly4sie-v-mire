@@ -58,6 +58,8 @@ class MapParams(object):
         ly = self.lat + dy * coord_to_geo_y * math.cos(math.radians(self.lat)) * math.pow(2, 15 - self.zoom)
         return lx, ly
 
+    def retyrn_kord(self):
+        return self.lat, self.lon
     # еще несколько функций
 
 
@@ -119,7 +121,7 @@ def main():
         # Загружаем карту, используя текущие параметры.
 
         map_file = load_map(mp)
-
+        print(mp.retyrn_kord())
         # Рисуем картинку, загружаемую из только что созданного файла.
         screen.blit(pygame.image.load(map_file), (0, 0))
 
