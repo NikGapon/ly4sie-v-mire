@@ -24,6 +24,7 @@ def ll(x, y):
 # Параметры отображения карты:
 # координаты, масштаб, найденные объекты и т.д.
 
+
 class MapParams(object):
     # Параметры по умолчанию.
     def __init__(self):
@@ -74,6 +75,7 @@ def load_map(mp):
             print("Ошибка выполнения запроса:")
             print("Http статус:", response.status_code, "(", response.reason, ")")
             #sys.exit(1)
+
     except:
         print("Запрос не удалось выполнить. Проверьте наличие сети Интернет.")
         #sys.exit(1)
@@ -112,16 +114,22 @@ def main():
                 mp.type = 'sat'
             elif event.key == pygame.K_F7:
                 mp.type = 'map'
+
             if event.key == pygame.K_PAGEUP and mp.zoom < 19 and mp.zoom > 0:
                 mp.zoom += 1
+
             elif event.key == pygame.K_PAGEDOWN and mp.zoom < 19 and mp.zoom > 0:
                 mp.zoom -= 1
+
+            elif event.key == pygame.K_SPACE:
+                print(mp.retyrn_kord())
             # другие eventы
+
 
         # Загружаем карту, используя текущие параметры.
 
         map_file = load_map(mp)
-        print(mp.retyrn_kord())
+        #print(mp.retyrn_kord())
         # Рисуем картинку, загружаемую из только что созданного файла.
         screen.blit(pygame.image.load(map_file), (0, 0))
 
