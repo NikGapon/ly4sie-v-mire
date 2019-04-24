@@ -125,29 +125,29 @@ def main():
     pd_cs.image = load_image("p.d c.s.png")
     pd_cs.rect = pd_cs.image.get_rect()
     all_sprites.add(pd_cs)
-    pd_cs.rect.x = 4000
-    pd_cs.rect.y = -4000
+    pd_cs.rect.x = 284
+    pd_cs.rect.y = 410
 
     pl_cs = pygame.sprite.Sprite()
     pl_cs.image = load_image("p.l c.s.png")
     pl_cs.rect = pl_cs.image.get_rect()
     all_sprites.add(pl_cs)
-    pl_cs.rect.x = 4000
-    pl_cs.rect.y = -4000
+    pl_cs.rect.x = 0
+    pl_cs.rect.y = 209
 
     pr_cs = pygame.sprite.Sprite()
     pr_cs.image = load_image("p.r c.s.png")
     pr_cs.rect = pd_cs.image.get_rect()
     all_sprites.add(pr_cs)
-    pr_cs.rect.x = 4000
-    pr_cs.rect.y = -4000
+    pr_cs.rect.x = 560
+    pr_cs.rect.y = 209
 
     pu_cs = pygame.sprite.Sprite()
     pu_cs.image = load_image("p.u c.s.png")
     pu_cs.rect = pu_cs.image.get_rect()
     all_sprites.add(pu_cs)
-    pu_cs.rect.x = 4000
-    pu_cs.rect.y = -4000
+    pu_cs.rect.x = 284
+    pu_cs.rect.y = 0
 
     while True:
         event = pygame.event.wait()
