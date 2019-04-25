@@ -3,6 +3,7 @@ import requests
 import sys
 import os
 
+import random
 import math
 
 from common.distance import lonlat_distance
@@ -52,13 +53,18 @@ class MapParams(object):
         self.lon = 37.664777
         self.zoom = 15  # Масштаб карты на старте.
         self.type = "map"  # Тип карты на старте.
-        
+        self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000)
+        print(self.r_lat, self.r_lon)
         self.search_result = None  # Найденный объект для отображения на карте.
         self.use_postal_code = False
 
     # Преобразование координат в параметр ll
     def ll(self):
         return ll(self.lon, self.lat)
+
+    def proverka(self):
+        if self.lon - self.r_lon <= 0.5 and self.lat - self.r_lat <= 0.5:
+            return True
 
     # Обновление параметров карты по нажатой клавише.
     def update(self, event):
@@ -228,7 +234,8 @@ def main():
         all_sprites.draw(screen)
         # Переключаем экран и ждем закрытия окна.
         pygame.display.flip()
-
+        if mp.proverka():
+            pass
     pygame.quit()
     # Удаляем за собой файл с изображением.
     os.remove(map_file)
