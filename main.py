@@ -64,7 +64,7 @@ class MapParams(object):
         return ll(self.lon, self.lat)
 
     def rylat(self):
-        return self.r_lat, self.lon
+        return self.r_lat, self.r_lon
 
     def proverka(self):
         if self.lon - self.r_lon <= 0.5 and self.lat - self.r_lat <= 0.5:
@@ -230,8 +230,9 @@ def main():
                 mp.zoom -= 1
 
             elif event.key == pygame.K_SPACE:
+                print(mp.rylat())
                 print(mp.retyrn_kord())
-                print(mp.zoom)
+                # print(mp.zoom)
                 if mp.zoom >= 14:
                     if mp.retyrn_kord()[0] > mp.rylat()[0]:
                         pd_ck.rect.x = 284
@@ -250,23 +251,69 @@ def main():
 
 
                     if mp.retyrn_kord()[1] < mp.rylat()[0]:
-                        pd_ck.rect.x = 284
-                        pd_ck.rect.y = 410
+                        pl_ck.rect.x = 0
+                        pl_ck.rect.y = 209
                     else:
-                        pd_ck.rect.x = 4000
-                        pd_ck.rect.y = -4000
+                        pl_ck.rect.x = 4000
+                        pl_ck.rect.y = -4000
 
                     if mp.retyrn_kord()[1] > mp.rylat()[0]:
-                        pu_ck.rect.x = 284
-                        pu_ck.rect.y = 0
+                        pr_ck.rect.x = 560
+                        pr_ck.rect.y = 209
                     else:
-                        pu_ck.rect.x = 4000
-                        pu_ck.rect.y = -4000
+                        pr_ck.rect.x = 4000
+                        pr_ck.rect.y = -4000
 
             # другие eventы
 
 
         # Загружаем карту, используя текущие параметры.
+
+        if mp.zoom >= 14:
+            if mp.retyrn_kord()[0] > mp.rylat()[0]:
+                pd_ck.rect.x = 284
+                pd_ck.rect.y = 410
+            else:
+                pd_ck.rect.x = 4000
+                pd_ck.rect.y = -4000
+
+            if mp.retyrn_kord()[0] < mp.rylat()[0]:
+                pu_ck.rect.x = 284
+                pu_ck.rect.y = 0
+            else:
+                pu_ck.rect.x = 4000
+                pu_ck.rect.y = -4000
+
+            if mp.retyrn_kord()[1] < mp.rylat()[0]:
+                pl_ck.rect.x = 0
+                pl_ck.rect.y = 209
+            else:
+                pl_ck.rect.x = 4000
+                pl_ck.rect.y = -4000
+
+            if mp.retyrn_kord()[1] > mp.rylat()[0]:
+                pr_ck.rect.x = 560
+                pr_ck.rect.y = 209
+            else:
+                pr_ck.rect.x = 4000
+                pr_ck.rect.y = -4000
+
+        else:
+
+            pd_ck.rect.x = 4000
+            pd_ck.rect.y = -4000
+
+
+            pl_ck.rect.x = 4000
+            pl_ck.rect.y = -4000
+
+
+            pr_ck.rect.x = 4000
+            pr_ck.rect.y = -4000
+
+
+            pu_ck.rect.x = 4000
+            pu_ck.rect.y = -4000
 
         map_file = load_map(mp)
 
