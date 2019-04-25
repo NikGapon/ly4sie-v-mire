@@ -52,7 +52,7 @@ class MapParams(object):
         self.lon = 37.664777
         self.zoom = 15  # Масштаб карты на старте.
         self.type = "map"  # Тип карты на старте.
-
+        
         self.search_result = None  # Найденный объект для отображения на карте.
         self.use_postal_code = False
 
@@ -63,16 +63,16 @@ class MapParams(object):
     # Обновление параметров карты по нажатой клавише.
     def update(self, event):
         if event.key == pygame.K_LEFT:
-            if LON_STEP * 2**(15 - self.zoom) >= 180 and LON_STEP * 2**(15 - self.zoom) <= -180:
+            if LON_STEP * 2**(15 - self.zoom) <= 180 and LON_STEP * 2**(15 - self.zoom) >= -180:
                 self.lon -= LON_STEP * 2**(15 - self.zoom)
         if event.key == pygame.K_RIGHT:
-            if LON_STEP * 2 ** (15 - self.zoom) >= 180 and LON_STEP * 2 ** (15 - self.zoom) <= -180:
+            if LON_STEP * 2 ** (15 - self.zoom) <= 180 and LON_STEP * 2 ** (15 - self.zoom) >= -180:
                 self.lon += LON_STEP * 2**(15 - self.zoom)
         if event.key == pygame.K_UP:
-            if LAT_STEP * 2**(15 - self.zoom) >= 90 and LAT_STEP * 2**(15 - self.zoom) <= -90:
+            if LAT_STEP * 2**(15 - self.zoom) <= 90 and LAT_STEP * 2**(15 - self.zoom) >= -90:
                 self.lat += LAT_STEP * 2**(15 - self.zoom)
         if event.key == pygame.K_DOWN:
-            if LAT_STEP * 2 ** (15 - self.zoom) >= 90 and LAT_STEP * 2 ** (15 - self.zoom) <= -90:
+            if LAT_STEP * 2 ** (15 - self.zoom) <= 90 and LAT_STEP * 2 ** (15 - self.zoom) >= -90:
                 self.lat -= LAT_STEP * 2**(15 - self.zoom)
 
     # Преобразование экранных координат в географические.
