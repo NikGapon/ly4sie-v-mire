@@ -54,6 +54,7 @@ class MapParams(object):
         self.zoom = 15  # Масштаб карты на старте.
         self.type = "map"  # Тип карты на старте.
         self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000)
+        # self.r_lat, self.r_lon = self.lat, self.lon
         print(self.r_lat, self.r_lon)
         self.search_result = None  # Найденный объект для отображения на карте.
         self.use_postal_code = False
@@ -62,8 +63,13 @@ class MapParams(object):
     def ll(self):
         return ll(self.lon, self.lat)
 
+    def rylat(self):
+        return self.r_lat, self.lon
+
     def proverka(self):
         if self.lon - self.r_lon <= 0.5 and self.lat - self.r_lat <= 0.5:
+            print(self.lat)
+            print(self.r_lat)
             return True
 
     # Обновление параметров карты по нажатой клавише.
@@ -130,6 +136,13 @@ def main():
 
     # Заводим объект, в котором будем хранить все параметры отрисовки карты.
     mp = MapParams()
+
+    win = pygame.sprite.Sprite()
+    win.image = load_image("win.png")
+    win.rect = win.image.get_rect()
+    all_sprites.add(win)
+    win.rect.x = 4000
+    win.rect.y = -4000
 
     # blue
 
@@ -219,8 +232,37 @@ def main():
             elif event.key == pygame.K_SPACE:
                 print(mp.retyrn_kord())
                 print(mp.zoom)
-                if mp.zoom <= 14:
-                    pass
+                if mp.zoom >= 14:
+                    if mp.retyrn_kord()[0] > mp.rylat()[0]:
+                        pd_ck.rect.x = 284
+                        pd_ck.rect.y = 410
+                    else:
+                        pd_ck.rect.x = 4000
+                        pd_ck.rect.y = -4000
+
+                    if mp.retyrn_kord()[0] < mp.rylat()[0]:
+                        pu_ck.rect.x = 284
+                        pu_ck.rect.y = 0
+                    else:
+                        pu_ck.rect.x = 4000
+                        pu_ck.rect.y = -4000
+
+
+
+                    if mp.retyrn_kord()[1] < mp.rylat()[0]:
+                        pd_ck.rect.x = 284
+                        pd_ck.rect.y = 410
+                    else:
+                        pd_ck.rect.x = 4000
+                        pd_ck.rect.y = -4000
+
+                    if mp.retyrn_kord()[1] > mp.rylat()[0]:
+                        pu_ck.rect.x = 284
+                        pu_ck.rect.y = 0
+                    else:
+                        pu_ck.rect.x = 4000
+                        pu_ck.rect.y = -4000
+
             # другие eventы
 
 
@@ -235,7 +277,17 @@ def main():
         # Переключаем экран и ждем закрытия окна.
         pygame.display.flip()
         if mp.proverka():
-            pass
+            win.rect.x = 150
+            win.rect.y = 100
+            print('Победа после обеда')
+
+            all_sprites.draw(screen)
+            pygame.display.flip()
+            while True:
+                event = pygame.event.wait()
+                if event.type == pygame.QUIT:  # Выход из программы
+                    break
+            break
     pygame.quit()
     # Удаляем за собой файл с изображением.
     os.remove(map_file)
