@@ -67,7 +67,7 @@ class MapParams(object):
         return self.r_lat, self.r_lon
 
     def proverka(self):
-        if self.lon - self.r_lon <= 0.5 and self.lat - self.r_lat <= 0.5:
+        if int(self.lon) == self.r_lon and int(self.lat) == self.r_lat:
             print(self.lat)
             print(self.r_lat)
             return True
@@ -232,6 +232,7 @@ def main():
             elif event.key == pygame.K_SPACE:
                 print(mp.rylat())
                 print(mp.retyrn_kord())
+
                 # print(mp.zoom)
                 if mp.zoom >= 14:
                     if mp.retyrn_kord()[0] > mp.rylat()[0]:
