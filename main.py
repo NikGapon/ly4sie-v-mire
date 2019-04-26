@@ -41,7 +41,11 @@ def ll(x, y):
     return "{0},{1}".format(x, y)
 
 
-
+def ck(x, y, ad):
+    if x == 0 and y == 0:
+        find_business()
+    reverse_geocode(ad)
+    lonlat_distance(x, y)
 # Параметры отображения карты:
 # координаты, масштаб, найденные объекты и т.д.
 
