@@ -57,7 +57,10 @@ class MapParams(object):
         self.lon = 37.664777
         self.zoom = 15  # Масштаб карты на старте.
         self.type = "map"  # Тип карты на старте.
+
         self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000)
+        while ((self.r_lat <=0 and self.r_lon <= 0) or (self.r_lat >=0 and self.r_lon >= 0)) == False:
+            self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000) 
         # self.r_lat, self.r_lon = self.lat, self.lon
         print(self.r_lat, self.r_lon)
         self.search_result = None  # Найденный объект для отображения на карте.
@@ -240,14 +243,14 @@ def main():
                 # print(mp.zoom)
                 if mp.zoom >= 14:
                     if proverks_ret > 0:
-                        if mp.retyrn_kord()[0] > mp.rylat()[0]:
+                        if mp.retyrn_kord()[0] ** 2 < mp.rylat()[0] ** 2:
                             pd_ck.rect.x = 284
                             pd_ck.rect.y = 410
                         else:
                             pd_ck.rect.x = 4000
                             pd_ck.rect.y = -4000
 
-                        if mp.retyrn_kord()[0] < mp.rylat()[0]:
+                        if mp.retyrn_kord()[0] ** 2 > mp.rylat()[0] ** 2:
                             pu_ck.rect.x = 284
                             pu_ck.rect.y = 0
                         else:
@@ -256,14 +259,14 @@ def main():
 
 
 
-                        if mp.retyrn_kord()[1] < mp.rylat()[0]:
+                        if mp.retyrn_kord()[1] ** 2 > mp.rylat()[1] ** 2:
                             pl_ck.rect.x = 0
                             pl_ck.rect.y = 209
                         else:
                             pl_ck.rect.x = 4000
                             pl_ck.rect.y = -4000
 
-                        if mp.retyrn_kord()[1] > mp.rylat()[0]:
+                        if mp.retyrn_kord()[1] ** 2 < mp.rylat()[1] ** 2:
                             pr_ck.rect.x = 560
                             pr_ck.rect.y = 209
                         else:
