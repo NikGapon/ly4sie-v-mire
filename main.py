@@ -208,7 +208,7 @@ def main():
     pu_ck.rect.x = 4000
     pu_ck.rect.y = -4000
 
-
+    proverks_ret = 30
     while True:
         event = pygame.event.wait()
         if event.type == pygame.QUIT:  # Выход из программы
@@ -235,71 +235,72 @@ def main():
 
                 # print(mp.zoom)
                 if mp.zoom >= 14:
-                    if mp.retyrn_kord()[0] > mp.rylat()[0]:
-                        pd_ck.rect.x = 284
-                        pd_ck.rect.y = 410
-                    else:
-                        pd_ck.rect.x = 4000
-                        pd_ck.rect.y = -4000
+                    if proverks_ret > 0:
+                        if mp.retyrn_kord()[0] > mp.rylat()[0]:
+                            pd_ck.rect.x = 284
+                            pd_ck.rect.y = 410
+                        else:
+                            pd_ck.rect.x = 4000
+                            pd_ck.rect.y = -4000
 
-                    if mp.retyrn_kord()[0] < mp.rylat()[0]:
-                        pu_ck.rect.x = 284
-                        pu_ck.rect.y = 0
-                    else:
-                        pu_ck.rect.x = 4000
-                        pu_ck.rect.y = -4000
+                        if mp.retyrn_kord()[0] < mp.rylat()[0]:
+                            pu_ck.rect.x = 284
+                            pu_ck.rect.y = 0
+                        else:
+                            pu_ck.rect.x = 4000
+                            pu_ck.rect.y = -4000
 
 
 
-                    if mp.retyrn_kord()[1] < mp.rylat()[0]:
-                        pl_ck.rect.x = 0
-                        pl_ck.rect.y = 209
-                    else:
-                        pl_ck.rect.x = 4000
-                        pl_ck.rect.y = -4000
+                        if mp.retyrn_kord()[1] < mp.rylat()[0]:
+                            pl_ck.rect.x = 0
+                            pl_ck.rect.y = 209
+                        else:
+                            pl_ck.rect.x = 4000
+                            pl_ck.rect.y = -4000
 
-                    if mp.retyrn_kord()[1] > mp.rylat()[0]:
-                        pr_ck.rect.x = 560
-                        pr_ck.rect.y = 209
-                    else:
-                        pr_ck.rect.x = 4000
-                        pr_ck.rect.y = -4000
-
+                        if mp.retyrn_kord()[1] > mp.rylat()[0]:
+                            pr_ck.rect.x = 560
+                            pr_ck.rect.y = 209
+                        else:
+                            pr_ck.rect.x = 4000
+                            pr_ck.rect.y = -4000
+                    proverks_ret -= 1
             # другие eventы
 
 
         # Загружаем карту, используя текущие параметры.
 
-        if mp.zoom >= 14:
-            if mp.retyrn_kord()[0] > mp.rylat()[0]:
-                pd_ck.rect.x = 284
-                pd_ck.rect.y = 410
-            else:
-                pd_ck.rect.x = 4000
-                pd_ck.rect.y = -4000
+        if mp.zoom <= 14:
+        #    if mp.retyrn_kord()[0] > mp.rylat()[0]:
+        #       pd_ck.rect.x = 284
+        #        pd_ck.rect.y = 410
+        #    else:
+        #        pd_ck.rect.x = 4000
+        #        pd_ck.rect.y = -4000
+        #
+        #    if mp.retyrn_kord()[0] < mp.rylat()[0]:
+        #        pu_ck.rect.x = 284
+        #        pu_ck.rect.y = 0
+        #    else:
+        #        pu_ck.rect.x = 4000
+        #        pu_ck.rect.y = -4000
+        #
+        #    if mp.retyrn_kord()[1] < mp.rylat()[0]:
+        #        pl_ck.rect.x = 0
+        #        pl_ck.rect.y = 209
+        #    else:
+        #        pl_ck.rect.x = 4000
+        #        pl_ck.rect.y = -4000
+        #
+        #    if mp.retyrn_kord()[1] > mp.rylat()[0]:
+        #        pr_ck.rect.x = 560
+        #       pr_ck.rect.y = 209
+        #    else:
+        #        pr_ck.rect.x = 4000
+        #        pr_ck.rect.y = -4000
 
-            if mp.retyrn_kord()[0] < mp.rylat()[0]:
-                pu_ck.rect.x = 284
-                pu_ck.rect.y = 0
-            else:
-                pu_ck.rect.x = 4000
-                pu_ck.rect.y = -4000
-
-            if mp.retyrn_kord()[1] < mp.rylat()[0]:
-                pl_ck.rect.x = 0
-                pl_ck.rect.y = 209
-            else:
-                pl_ck.rect.x = 4000
-                pl_ck.rect.y = -4000
-
-            if mp.retyrn_kord()[1] > mp.rylat()[0]:
-                pr_ck.rect.x = 560
-                pr_ck.rect.y = 209
-            else:
-                pr_ck.rect.x = 4000
-                pr_ck.rect.y = -4000
-
-        else:
+        #else:
 
             pd_ck.rect.x = 4000
             pd_ck.rect.y = -4000
