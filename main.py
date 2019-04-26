@@ -60,7 +60,7 @@ class MapParams(object):
 
         self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000)
         while ((self.r_lat <=0 and self.r_lon <= 0) or (self.r_lat >=0 and self.r_lon >= 0)) == False:
-            self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000) 
+            self.r_lat, self.r_lon = random.randint(-90.000, 90.000), random.randint(-180.000, 180.000)
         # self.r_lat, self.r_lon = self.lat, self.lon
         print(self.r_lat, self.r_lon)
         self.search_result = None  # Найденный объект для отображения на карте.
